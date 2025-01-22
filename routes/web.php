@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
 use App\Models\User;
@@ -14,10 +13,8 @@ Route::get('/about', function () {
     return view('about', ['title' => 'About Page', 'nama' => 'Pramartha']);
 });
 
-
 Route::get('/posts', function () {
-    $posts = Post::latest()->get();
-    return view('posts', ['title' => 'Blog', 'posts' => $posts]);
+    return view('posts', ['title' => 'Blog', 'posts' => Post::filter(request(['search', 'category', 'author']))->latest()->get()]);
 });
 
 Route::get('/posts/{post:slug}', function (Post $post){
