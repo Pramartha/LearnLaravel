@@ -25,6 +25,7 @@
                     </div>
                 </div>
             </form>
+            
         </div>
     </div>
 
@@ -61,6 +62,9 @@
                 <a href="/posts" class="block text-blue-600 hover:underline">&laquo;Back to All Posts</a>
             </div>
             @endforelse
+        </div>
+        <div class="mt-6 flex justify-center items-center mx-2">
+            {{ $posts->links() }}
         </div>  
     </div> 
 </x-layout>
